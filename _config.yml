@@ -5,4 +5,7 @@ defaults:
   - scope:
       path: ""
     values:
+      title: 8Rivers
+      subtitle: Mohammad Masoumi
       hero_image: /assets/img/top-banner.jpg
+      hero_darken: true
