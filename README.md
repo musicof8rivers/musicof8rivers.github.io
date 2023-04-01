@@ -1,4 +1,5 @@
 # 8Rivers
+Welcome to 8Rivers homepage.
 
-### Comming soon ...
-8Rivers songs will be demonstraited here, and more!
+### Coming soon ...
+8Rivers songs will be demonstrated here, and more!
