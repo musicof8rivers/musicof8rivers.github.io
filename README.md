@@ -110,4 +110,59 @@
     <form>
       <input type="text" placeholder="Your Name" required />
       <input type="email" placeholder="Your Email" required />
-      <textarea rows="5"
+  <textarea rows="5" placeholder="Your Message"></textarea>
+<button type="submit">Send</button>
+</form>
+</section> <!-- End of Contact -->
+
+<footer>
+  <p>© 2025, 8Rivers. All rights reserved.</p>
+</footer>
+
+<script>
+  // Navbar scroll background
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('main-header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = anchor.getAttribute('href').slice(1);
+      const targetEl = document.getElementById(targetId);
+      if(targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Modal functionality
+  const modal = document.getElementById('modal');
+  const modalVideo = document.getElementById('modal-video');
+  const modalNote = document.getElementById('modal-note');
+  const closeBtn = document.getElementById('close-btn');
+
+  document.querySelectorAll('.work-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const videoId = item.dataset.video;
+      const note = item.dataset.note;
+      modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      modalNote.textContent = note;
+      modal.style.display = 'flex';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    modalVideo.src = '';
+  });
+
+  window.addEventListener('click', e => {
+    if(e.target === modal){
+      modal.style.display = 'none';
+      modalVideo.src = '';
+    }
+  });
+</script>
+</body>
+</html>
