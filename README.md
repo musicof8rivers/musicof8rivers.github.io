@@ -1,205 +1,167 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Film — Clint Mansell</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>8Rivers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
-    /* --- Reset & base styles --- */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #111;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; background: #000; color: #fff; }
+    a { color: inherit; text-decoration: none; }
 
-    /* --- Header & nav --- */
-    header {
-      background: #000;
-      color: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* Navbar */
+    header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; }
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; transition: background-color 0.3s ease;
     }
-    nav ul {
-      display: flex;
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin-left: 1.5rem; }
+    .nav-links a:hover { color: #ddd; }
+    header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
+
+    /* Hero Section */
+    #hero {
+      height: 100vh;
+      background: url('hero.jpg') center center / cover no-repeat;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; height: 100%; width: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative; z-index: 1; height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 0 2rem;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem;
+    }
+    .hero-content p { font-size: 1.5rem; }
+
+    /* Sections */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: auto; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+    p { line-height: 1.6; }
+
+    /* Works Grid */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
-    nav a {
-      color: #fff;
-      text-transform: lowercase;
-      font-weight: bold;
+    .work-item {
+      background: #111; border-radius: 12px; overflow: hidden;
+      transition: transform 0.3s; cursor: pointer;
     }
-    .cart-info {
-      font-size: 0.9rem;
-    }
+    .work-item:hover { transform: translateY(-5px); }
+    .work-item img { width: 100%; height: auto; display: block; }
+    .work-item h3 { padding: 1rem; font-size: 1.2rem; }
 
-    /* --- Main --- */
-    main {
-      padding: 2rem;
+    /* Contact */
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    input, textarea {
+      padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit;
     }
-    h1 {
-      text-transform: uppercase;
-      margin-bottom: 1rem;
+    button {
+      background: #444; color: #fff; border: none; padding: 0.8rem;
+      border-radius: 6px; cursor: pointer; transition: background 0.3s;
     }
+    button:hover { background: #666; }
 
-    /* --- Slideshow --- */
-    .slideshow {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto 2rem auto;
-      overflow: hidden;
-    }
-    .slide {
-      display: none;
-      position: absolute;
-      width: 100%;
-    }
-    .slide.active {
-      display: block;
-      position: relative;
-    }
-    .slide img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: grayscale(100%);
-      transition: filter 0.4s ease;
-    }
-    .slide img:hover {
-      filter: grayscale(0%);
-    }
-    .caption {
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      font-size: 0.9rem;
-    }
-    .slide-prev,
-    .slide-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-    .slide-prev { left: 0.5rem; }
-    .slide-next { right: 0.5rem; }
-
-    .slide-instructions {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #555;
-      margin-top: 1rem;
-    }
-
-    /* --- Footer --- */
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 1rem;
-    }
-    footer .social a {
-      margin: 0 0.5rem;
-      color: #aaa;
-    }
+    /* Footer */
+    footer { text-align: center; padding: 2rem; color: #aaa; background: #000; }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="about.html">about</a></li>
-        <li><a href="works.html">works</a></li>
-        <li><a href="berlin.html">berlin</a></li>
-        <li><a href="videos.html">videos</a></li>
-        <li><a href="shop.html">shop</a></li>
-        <li><a href="contact.html">contact</a></li>
+  <!-- Navbar -->
+  <header id="main-header">
+    <nav class="navbar">
+      <a href="#hero" class="logo">8Rivers</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="cart-info">
-      <a href="#">Cart (0 items)</a>
-    </div>
   </header>
 
-  <main>
-    <section class="works-section">
-      <h1>works</h1>
-      <div class="slideshow">
-        <div class="slide active">
-          <img src="assets/img/film1.jpg" alt="Work 1">
-          <div class="caption">Work 1 — description</div>
-        </div>
-        <div class="slide">
-          <img src="assets/img/film2.jpg" alt="Work 2">
-          <div class="caption">Work 2 — description</div>
-        </div>
-        <div class="slide">
-          <img src="assets/img/film3.jpg" alt="Work 3">
-          <div class="caption">Work 3 — description</div>
-        </div>
-        <button class="slide-prev">&#8249;</button>
-        <button class="slide-next">&#8250;</button>
-      </div>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>We Tell Stories in Code</h1>
+      <p>Design · Development · Creativity</p>
+    </div>
+  </section>
 
-      <div class="slide-instructions">
-        Use left/right arrows to navigate the slideshow or swipe left/right if using a mobile device.<br />
-        Press the space key then arrow keys to make a selection.
-      </div>
-    </section>
-  </main>
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      8Rivers is a creative digital studio exploring the intersection of design,
+      technology, and storytelling. Our mission is to craft meaningful experiences
+      through elegant code and thoughtful visuals.
+    </p>
+  </section>
 
+  <!-- Works -->
+  <section id="works">
+    <h2>Works</h2>
+    <div class="works-grid">
+      <div class="work-item">
+        <img src="work1.jpg" alt="Work 1" />
+        <h3>Project One</h3>
+      </div>
+      <div class="work-item">
+        <img src="work2.jpg" alt="Work 2" />
+        <h3>Project Two</h3>
+      </div>
+      <div class="work-item">
+        <img src="work3.jpg" alt="Work 3" />
+        <h3>Project Three</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <div class="social">
-      <a href="#">Instagram</a> | 
-      <a href="#">Twitter</a> | 
-      <a href="#">Facebook</a>
-    </div>
-    <div class="copyright">
-      &copy; 2025 Clint Mansell
-    </div>
+    <p>© 2025, 8Rivers. All rights reserved.</p>
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      let slides = document.querySelectorAll(".slide");
-      let current = 0;
-      const showSlide = (idx) => {
-        slides.forEach((s, i) => s.classList.toggle("active", i === idx));
-      };
-      document.querySelector(".slide-next").addEventListener("click", () => {
-        current = (current + 1) % slides.length;
-        showSlide(current);
-      });
-      document.querySelector(".slide-prev").addEventListener("click", () => {
-        current = (current - 1 + slides.length) % slides.length;
-        showSlide(current);
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight") {
-          current = (current + 1) % slides.length;
-          showSlide(current);
-        } else if (e.key === "ArrowLeft") {
-          current = (current - 1 + slides.length) % slides.length;
-          showSlide(current);
+    // Navbar scroll background
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
