@@ -6,139 +6,109 @@
   <title>8Rivers</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Open Sans', sans-serif; background: #000; color: #fff; }
-    a { color: inherit; text-decoration: none; }
+/* Reset & base styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Open Sans', sans-serif; background: #000; color: #fff; }
+a { color: inherit; text-decoration: none; }
 
-    header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; }
-    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; transition: background-color 0.3s ease; }
-
-    /* Navbar links */
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2.5rem;
-    }
-
-    .nav-links li a {
-      font-size: 1.5rem;
-      font-weight: bold;
-      padding: 0.5rem 0.2rem;
-      position: relative;
-      transition: color 0.3s, text-decoration 0.3s;
-    }
-
-    .nav-links li a:hover {
-      color: #ddd;
-      text-decoration: underline;
-    }
-
-    header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
-    section {
-  padding-top: 6rem; /* space for fixed navbar */
+/* Header & Navbar */
+header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem; /* slightly smaller padding */
+  transition: background-color 0.3s ease;
+  background-color: #000; /* black navbar */
 }
-
-html {
-  scroll-behavior: smooth; /* optional, smooth scrolling for links */
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links li a {
+  font-size: 1.3rem;  /* slightly smaller text */
+  font-weight: bold;
+  padding: 0.4rem 0.2rem;
+  position: relative;
+  transition: color 0.3s, text-decoration 0.3s;
+  color: #fff; /* white links */
 }
-    #hero { height: 100vh; background: url('hero.jpg') center center / cover no-repeat; position: relative; }
-    .hero-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.5); }
-    .hero-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 2rem; }
-    .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1.5rem; }
+.nav-links li a:hover {
+  color: #ddd; /* lighter on hover */
+  text-decoration: underline;
+}
+header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
 
-    section { padding: 5rem 2rem; max-width: 1100px; margin: auto; }
-    h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
-    p { line-height: 1.6; }
+/* Hero section */
+#hero { height: 100vh; background: url('hero.jpg') center center / cover no-repeat; position: relative; }
+.hero-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.5); }
+.hero-content {
+  position: relative; z-index: 1; height: 100%;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 0 2rem;
+}
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; }
+.hero-content p { font-size: 1.5rem; }
 
-    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .work-item { background: #111; border-radius: 12px; overflow: hidden; transition: transform 0.3s; cursor: pointer; position: relative; }
-    .work-item:hover { transform: translateY(-5px); }
-    .work-item img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: filter 0.5s ease; }
-    .work-item:hover img { filter: grayscale(0%); }
-    .work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; }
+/* Section spacing */
+section { padding: 6rem 2rem 5rem; max-width: 1100px; margin: auto; } /* padding-top adjusted for navbar */
+h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+p { line-height: 1.6; }
 
-    /* Modal styling */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-      z-index: 200;
-      padding: 2rem;
-      overflow-y: auto;
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
+/* Works grid */
+.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.work-item {
+  background: #111; border-radius: 12px; overflow: hidden;
+  transition: transform 0.3s; cursor: pointer; position: relative;
+}
+.work-item:hover { transform: translateY(-5px); }
+.work-item img {
+  width: 100%; height: auto; display: block;
+  filter: grayscale(100%); transition: filter 0.5s ease;
+}
+.work-item:hover img { filter: grayscale(0%); }
+.work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; }
 
-    .modal.show {
-      display: flex;
-      opacity: 1;
-      transform: scale(1);
-    }
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center; align-items: center;
+  z-index: 200; padding: 2rem; overflow-y: auto;
+  opacity: 0; transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.modal.show { display: flex; opacity: 1; transform: scale(1); }
+.modal-content {
+  background: #111; padding: 1rem; border-radius: 10px;
+  max-width: 800px; width: 100%; position: relative;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.modal-video-container { background: #222; padding: 1rem; border-radius: 6px; }
+.modal-note-container { background: #333; padding: 1rem; border-radius: 6px; color: #fff; font-size: 1rem; line-height: 1.4; }
+.modal iframe { width: 100%; height: 450px; border: none; border-radius: 6px; }
 
-    .modal-content {
-      background: #111;
-      padding: 1.5rem;
-      border-radius: 10px;
-      max-width: 900px;
-      width: 90%;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: center;
-    }
+/* Close button */
+.close-btn {
+  position: absolute; top: 10px; right: 10px;
+  background: #444; color: #fff; border: none;
+  font-size: 2rem; padding: 0.8rem 1.4rem; cursor: pointer;
+  border-radius: 6px;
+}
+.close-btn:hover { background: #666; }
 
-    .modal-video-container, .modal-note-container {
-      width: 100%;
-      border-radius: 8px;
-    }
+/* Form styles */
+form { display: flex; flex-direction: column; gap: 1rem; }
+input, textarea { padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit; }
+button { background: #444; color: #fff; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
+button:hover { background: #666; }
 
-    .modal-video-container iframe {
-      width: 100%;
-      height: 550px;
-      border: none;
-      border-radius: 6px;
-    }
+/* Footer */
+footer { text-align: center; padding: 2rem; color: #aaa; background: #000; }
 
-    .modal-note-container {
-      background: #333;
-      padding: 1rem;
-      color: #fff;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      text-align: center;
-    }
+/* Smooth scroll for anchor links */
+html { scroll-behavior: smooth; }
+</style>
 
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #444;
-      color: #fff;
-      border: none;
-      font-size: 2rem;
-      padding: 0.8rem 1.4rem;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-
-    .close-btn:hover { background: #666; }
-
-    form { display: flex; flex-direction: column; gap: 1rem; }
-    input, textarea { padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit; }
-    button { background: #444; color: #fff; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
-    button:hover { background: #666; }
-
-    footer { text-align: center; padding: 2rem; color: #aaa; background: #000; }
-  </style>
 </head>
 <body>
   <header id="main-header">
