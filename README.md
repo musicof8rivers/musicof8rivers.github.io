@@ -49,6 +49,9 @@ header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
 
 /* Section spacing */
 section { padding: 6rem 2rem 5rem; max-width: 1100px; margin: auto; } /* padding-top adjusted for navbar */
+#about { padding-top: 6rem; }
+#works { padding-top: 6rem; }
+#contact { padding-top: 6rem; }
 h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
 p { line-height: 1.6; }
 
