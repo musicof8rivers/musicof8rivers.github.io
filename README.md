@@ -55,10 +55,15 @@
     }
     .work-item {
       background: #111; border-radius: 12px; overflow: hidden;
-      transition: transform 0.3s; cursor: pointer;
+      transition: transform 0.3s; cursor: pointer; position: relative;
     }
     .work-item:hover { transform: translateY(-5px); }
-    .work-item img { width: 100%; height: auto; display: block; }
+    .work-item img {
+      width: 100%; height: auto; display: block;
+      filter: grayscale(100%);
+      transition: filter 0.5s ease;
+    }
+    .work-item:hover img { filter: grayscale(0%); }
     .work-item h3 { padding: 1rem; font-size: 1.2rem; }
 
     /* Contact */
@@ -112,18 +117,10 @@
   <section id="works">
     <h2>Works</h2>
     <div class="works-grid">
-      <div class="work-item">
-        <img src="work1.jpg" alt="Work 1" />
-        <h3>Project One</h3>
-      </div>
-      <div class="work-item">
-        <img src="work2.jpg" alt="Work 2" />
-        <h3>Project Two</h3>
-      </div>
-      <div class="work-item">
-        <img src="work3.jpg" alt="Work 3" />
-        <h3>Project Three</h3>
-      </div>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project d86</h3>
+      </a>
     </div>
   </section>
 
