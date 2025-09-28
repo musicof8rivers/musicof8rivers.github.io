@@ -34,7 +34,13 @@
     }
 
     header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
+    section {
+  padding-top: 6rem; /* space for fixed navbar */
+}
 
+html {
+  scroll-behavior: smooth; /* optional, smooth scrolling for links */
+}
     #hero { height: 100vh; background: url('hero.jpg') center center / cover no-repeat; position: relative; }
     .hero-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.5); }
     .hero-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 2rem; }
