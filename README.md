@@ -50,7 +50,7 @@
     /* Works Grid */
     .works-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
     .work-item {
@@ -64,7 +64,7 @@
       transition: filter 0.5s ease;
     }
     .work-item:hover img { filter: grayscale(0%); }
-    .work-item h3 { padding: 1rem; font-size: 1.2rem; }
+    .work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; }
 
     /* Contact */
     form { display: flex; flex-direction: column; gap: 1rem; }
@@ -119,7 +119,63 @@
     <div class="works-grid">
       <a href="https://example.com" target="_blank" class="work-item">
         <img src="d86.jpg" alt="Work d86" />
-        <h3>Project d86</h3>
+        <h3>Project 1</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 2</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 3</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 4</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 5</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 6</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 7</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 8</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 9</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 10</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 11</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 12</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 13</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 14</h3>
+      </a>
+      <a href="https://example.com" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Work d86" />
+        <h3>Project 15</h3>
       </a>
     </div>
   </section>
