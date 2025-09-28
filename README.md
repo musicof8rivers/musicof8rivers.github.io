@@ -117,65 +117,65 @@
   <section id="works">
     <h2>Works</h2>
     <div class="works-grid">
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 1</h3>
+      <a href="https://www.youtube.com/watch?v=video1" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 1" />
+        <h3>8Rivers notes: Project 1</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 2</h3>
+      <a href="https://www.youtube.com/watch?v=video2" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 2" />
+        <h3>8Rivers notes: Project 2</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 3</h3>
+      <a href="https://www.youtube.com/watch?v=video3" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 3" />
+        <h3>8Rivers notes: Project 3</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 4</h3>
+      <a href="https://www.youtube.com/watch?v=video4" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 4" />
+        <h3>8Rivers notes: Project 4</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 5</h3>
+      <a href="https://www.youtube.com/watch?v=video5" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 5" />
+        <h3>8Rivers notes: Project 5</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 6</h3>
+      <a href="https://www.youtube.com/watch?v=video6" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 6" />
+        <h3>8Rivers notes: Project 6</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 7</h3>
+      <a href="https://www.youtube.com/watch?v=video7" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 7" />
+        <h3>8Rivers notes: Project 7</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 8</h3>
+      <a href="https://www.youtube.com/watch?v=video8" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 8" />
+        <h3>8Rivers notes: Project 8</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 9</h3>
+      <a href="https://www.youtube.com/watch?v=video9" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 9" />
+        <h3>8Rivers notes: Project 9</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 10</h3>
+      <a href="https://www.youtube.com/watch?v=video10" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 10" />
+        <h3>8Rivers notes: Project 10</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 11</h3>
+      <a href="https://www.youtube.com/watch?v=video11" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 11" />
+        <h3>8Rivers notes: Project 11</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 12</h3>
+      <a href="https://www.youtube.com/watch?v=video12" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 12" />
+        <h3>8Rivers notes: Project 12</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 13</h3>
+      <a href="https://www.youtube.com/watch?v=video13" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 13" />
+        <h3>8Rivers notes: Project 13</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 14</h3>
+      <a href="https://www.youtube.com/watch?v=video14" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 14" />
+        <h3>8Rivers notes: Project 14</h3>
       </a>
-      <a href="https://example.com" target="_blank" class="work-item">
-        <img src="d86.jpg" alt="Work d86" />
-        <h3>Project 15</h3>
+      <a href="https://www.youtube.com/watch?v=video15" target="_blank" class="work-item">
+        <img src="d86.jpg" alt="Project 15" />
+        <h3>8Rivers notes: Project 15</h3>
       </a>
     </div>
   </section>
@@ -197,25 +197,18 @@
   </footer>
 
   <script>
-    // Navbar scroll background
     window.addEventListener('scroll', () => {
       const header = document.getElementById('main-header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
     });
 
-    // Smooth scrolling
     document.querySelectorAll('.nav-links a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').slice(1);
         const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
       });
     });
   </script>
