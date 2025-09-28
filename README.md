@@ -21,7 +21,7 @@ header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; }
 }
 
 .nav-links li a {
-  font-size: 1.5rem;   /* bigger font */
+  font-size: 1.2rem;   /* bigger font */
   font-weight: bold;
   padding: 0.5rem 0;   /* comfortable clickable area */
   position: relative;
@@ -52,14 +52,58 @@ p { line-height: 1.6; }
 .work-item:hover img { filter: grayscale(0%); }
 .work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; }
 
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; padding: 2rem; overflow-y: auto; }
-.modal-content { background: #111; padding: 1rem; border-radius: 10px; max-width: 800px; width: 100%; position: relative; display: flex; flex-direction: column; gap: 1rem; }
-.modal-video-container { background: #222; padding: 1rem; border-radius: 6px; }
-.modal-note-container { background: #333; padding: 1rem; border-radius: 6px; color: #fff; font-size: 1rem; line-height: 1.4; }
-.modal iframe { width: 100%; height: 450px; border: none; border-radius: 6px; }
-.close-btn { position: absolute; top: 10px; right: 10px; background: #444; color: #fff; border: none; font-size: 1.2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; }
-.close-btn:hover { background: #666; }
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  padding: 2rem;
+  overflow-y: auto;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
+.modal.show {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-content {
+  background: #111;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #444;
+  color: #fff;
+  border: none;
+  font-size: 1.8rem; /* bigger exit button */
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.close-btn:hover {
+  background: #666;
+}
 form { display: flex; flex-direction: column; gap: 1rem; }
 input, textarea { padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit; }
 button { background: #444; color: #fff; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
@@ -139,49 +183,33 @@ footer { text-align: center; padding: 2rem; color: #aaa; background: #000; }
 </footer>
 
 <script>
-  // Navbar scroll background
-  window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
+const modal = document.getElementById('modal');
+const modalVideo = document.getElementById('modal-video');
+const modalNote = document.getElementById('modal-note');
+const closeBtn = document.getElementById('close-btn');
 
-  // Smooth scroll
-  document.querySelectorAll('.nav-links a').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = anchor.getAttribute('href').slice(1);
-      const targetEl = document.getElementById(targetId);
-      if(targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
-    });
+document.querySelectorAll('.work-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const videoId = item.dataset.video;
+    const note = item.dataset.note;
+    modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    modalNote.textContent = note;
+    modal.classList.add('show'); // smooth animation
   });
+});
 
-  // Modal functionality
-  const modal = document.getElementById('modal');
-  const modalVideo = document.getElementById('modal-video');
-  const modalNote = document.getElementById('modal-note');
-  const closeBtn = document.getElementById('close-btn');
+function closeModal() {
+  modal.classList.remove('show');
+  setTimeout(() => { modalVideo.src = ''; }, 300); // clear video after fade-out
+}
 
-  document.querySelectorAll('.work-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const videoId = item.dataset.video;
-      const note = item.dataset.note;
-      modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-      modalNote.textContent = note;
-      modal.style.display = 'flex';
-    });
-  });
+closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', e => {
+  if(e.target === modal){
+    closeModal();
+  }
+});
 
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    modalVideo.src = '';
-  });
-
-  window.addEventListener('click', e => {
-    if(e.target === modal){
-      modal.style.display = 'none';
-      modalVideo.src = '';
-    }
-  });
 </script>
 </body>
 </html>
