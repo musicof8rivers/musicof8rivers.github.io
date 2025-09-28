@@ -5,50 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>8Rivers</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Open Sans', sans-serif; background: #000; color: #fff; }
-    a { color: inherit; text-decoration: none; }
+ <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Open Sans', sans-serif; background: #000; color: #fff; }
+a { color: inherit; text-decoration: none; }
 
-    header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; }
-    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; transition: background-color 0.3s ease; }
-    .nav-links { display: flex; list-style: none; }
-    .nav-links li { margin-left: 1.5rem; }
-    .nav-links a:hover { color: #ddd; }
-    header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
+header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; transition: background-color 0.3s ease; }
 
-    #hero { height: 100vh; background: url('hero.jpg') center center / cover no-repeat; position: relative; }
-    .hero-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.5); }
-    .hero-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 2rem; }
-    .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1.5rem; }
+/* Fixed navbar links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem; /* increased spacing between links */
+}
 
-    section { padding: 5rem 2rem; max-width: 1100px; margin: auto; }
-    h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
-    p { line-height: 1.6; }
+.nav-links li a {
+  font-size: 1.5rem;   /* bigger font */
+  font-weight: bold;
+  padding: 0.5rem 0;   /* comfortable clickable area */
+  position: relative;
+  transition: color 0.3s, text-decoration 0.3s;
+}
 
-    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .work-item { background: #111; border-radius: 12px; overflow: hidden; transition: transform 0.3s; cursor: pointer; position: relative; }
-    .work-item:hover { transform: translateY(-5px); }
-    .work-item img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: filter 0.5s ease; }
-    .work-item:hover img { filter: grayscale(0%); }
-    .work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; }
+.nav-links li a:hover {
+  color: #ddd;
+  text-decoration: underline; /* underline on hover */
+}
 
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; padding: 2rem; overflow-y: auto; }
-    .modal-content { background: #111; padding: 1rem; border-radius: 10px; max-width: 800px; width: 100%; position: relative; display: flex; flex-direction: column; gap: 1rem; }
-    .modal-video-container { background: #222; padding: 1rem; border-radius: 6px; }
-    .modal-note-container { background: #333; padding: 1rem; border-radius: 6px; color: #fff; font-size: 1rem; line-height: 1.4; }
-    .modal iframe { width: 100%; height: 450px; border: none; border-radius: 6px; }
-    .close-btn { position: absolute; top: 10px; right: 10px; background: #444; color: #fff; border: none; font-size: 1.2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; }
-    .close-btn:hover { background: #666; }
+header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
 
-    form { display: flex; flex-direction: column; gap: 1rem; }
-    input, textarea { padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit; }
-    button { background: #444; color: #fff; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
-    button:hover { background: #666; }
+#hero { height: 100vh; background: url('hero.jpg') center center / cover no-repeat; position: relative; }
+.hero-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.5); }
+.hero-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 2rem; }
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; }
+.hero-content p { font-size: 1.5rem; }
 
-    footer { text-align: center; padding: 2rem; color: #aaa; background: #000; }
-  </style>
+section { padding: 5rem 2rem; max-width: 1100px; margin: auto; }
+h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+p { line-height: 1.6; }
+
+.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.work-item { background: #111; border-radius: 12px; overflow: hidden; transition: transform 0.3s; cursor: pointer; position: relative; }
+.work-item:hover { transform: translateY(-5px); }
+.work-item img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: filter 0.5s ease; }
+.work-item:hover img { filter: grayscale(0%); }
+.work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; }
+
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; padding: 2rem; overflow-y: auto; }
+.modal-content { background: #111; padding: 1rem; border-radius: 10px; max-width: 800px; width: 100%; position: relative; display: flex; flex-direction: column; gap: 1rem; }
+.modal-video-container { background: #222; padding: 1rem; border-radius: 6px; }
+.modal-note-container { background: #333; padding: 1rem; border-radius: 6px; color: #fff; font-size: 1rem; line-height: 1.4; }
+.modal iframe { width: 100%; height: 450px; border: none; border-radius: 6px; }
+.close-btn { position: absolute; top: 10px; right: 10px; background: #444; color: #fff; border: none; font-size: 1.2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; }
+.close-btn:hover { background: #666; }
+
+form { display: flex; flex-direction: column; gap: 1rem; }
+input, textarea { padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit; }
+button { background: #444; color: #fff; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
+button:hover { background: #666; }
+
+footer { text-align: center; padding: 2rem; color: #aaa; background: #000; }
+</style>
+
 </head>
 <body>
   <header id="main-header">
