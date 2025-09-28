@@ -1,165 +1,208 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music of 8 Rivers | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Film — Clint Mansell</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    /* Reset + Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* --- Reset & base styles --- */
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0a0a0a;
-      color: #eaeaea;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #111;
     }
-    a { color: inherit; text-decoration: none; }
-    h1, h2 { font-weight: bold; }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(0,0,0,0.8);
-      display: flex; justify-content: center;
-      padding: 1rem;
-      z-index: 1000;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    nav ul { display: flex; gap: 2rem; list-style: none; }
-    nav a { transition: color 0.3s; }
-    nav a:hover { color: #00ffaa; }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-    /* Sections */
-    section {
-      min-height: 100vh;
-      padding: 5rem 2rem;
+    /* --- Header & nav --- */
+    header {
+      background: #000;
+      color: #fff;
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      flex-direction: column;
-      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      text-transform: lowercase;
+      font-weight: bold;
+    }
+    .cart-info {
+      font-size: 0.9rem;
     }
 
-    /* Hero */
-    #home {
-      background: linear-gradient(135deg, #111, #222);
+    /* --- Main --- */
+    main {
+      padding: 2rem;
     }
-    #home h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, #00ffaa, #00ccff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    h1 {
+      text-transform: uppercase;
       margin-bottom: 1rem;
     }
-    #home p { font-size: 1.2rem; color: #bbb; }
 
-    /* About */
-    #about { background: #141414; }
-    #about h2 { font-size: 2rem; margin-bottom: 1rem; }
-
-    /* Projects */
-    #projects { background: #191919; }
-    #projects h2 { font-size: 2rem; margin-bottom: 2rem; }
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+    /* --- Slideshow --- */
+    .slideshow {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      position: absolute;
       width: 100%;
-      max-width: 1000px;
     }
-    .project {
-      background: #222;
-      padding: 1.5rem;
-      border-radius: 10px;
-      transition: transform 0.3s, box-shadow 0.3s;
+    .slide.active {
+      display: block;
+      position: relative;
     }
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,255,170,0.3);
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease;
     }
-
-    /* Contact */
-    #contact { background: #141414; }
-    #contact h2 { font-size: 2rem; margin-bottom: 1rem; }
-    #contact p { margin-bottom: 1rem; }
-
-    /* Footer */
-    footer {
-      background: #0a0a0a;
-      padding: 1rem;
-      text-align: center;
+    .slide img:hover {
+      filter: grayscale(0%);
+    }
+    .caption {
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
       font-size: 0.9rem;
-      color: #777;
+    }
+    .slide-prev,
+    .slide-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    .slide-prev { left: 0.5rem; }
+    .slide-next { right: 0.5rem; }
+
+    .slide-instructions {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 1rem;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      #home h1 { font-size: 2rem; }
-      nav ul { gap: 1rem; }
+    /* --- Footer --- */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+    }
+    footer .social a {
+      margin: 0 0.5rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero -->
-  <section id="home">
-    <h1>Music of 8 Rivers</h1>
-    <p>Welcome to my portfolio. Explore my work, ideas, and projects.</p>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a creator passionate about blending art, music, and technology.  
-      This portfolio is a place where I share my journey and experiments.
-    </p>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project">
-        <h3>Project One</h3>
-        <p>A short description of this project. Maybe a link to GitHub or demo.</p>
-      </div>
-      <div class="project">
-        <h3>Project Two</h3>
-        <p>Another project you’re proud of. Describe what it does and why it matters.</p>
-      </div>
-      <div class="project">
-        <h3>Project Three</h3>
-        <p>Keep adding more projects as you go — this grid is expandable.</p>
-      </div>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="about.html">about</a></li>
+        <li><a href="works.html">works</a></li>
+        <li><a href="berlin.html">berlin</a></li>
+        <li><a href="videos.html">videos</a></li>
+        <li><a href="shop.html">shop</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
+    </nav>
+    <div class="cart-info">
+      <a href="#">Cart (0 items)</a>
     </div>
-  </section>
+  </header>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>If you’d like to connect, feel free to reach out:</p>
-    <p>
-      <a href="mailto:your@email.com">your@email.com</a><br>
-      <a href="https://github.com/musicof8rivers" target="_blank">GitHub</a> | 
-      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-    </p>
-  </section>
+  <main>
+    <section class="works-section">
+      <h1>works</h1>
+      <div class="slideshow">
+        <div class="slide active">
+          <img src="assets/img/film1.jpg" alt="Work 1">
+          <div class="caption">Work 1 — description</div>
+        </div>
+        <div class="slide">
+          <img src="assets/img/film2.jpg" alt="Work 2">
+          <div class="caption">Work 2 — description</div>
+        </div>
+        <div class="slide">
+          <img src="assets/img/film3.jpg" alt="Work 3">
+          <div class="caption">Work 3 — description</div>
+        </div>
+        <button class="slide-prev">&#8249;</button>
+        <button class="slide-next">&#8250;</button>
+      </div>
 
-  <!-- Footer -->
+      <div class="slide-instructions">
+        Use left/right arrows to navigate the slideshow or swipe left/right if using a mobile device.<br />
+        Press the space key then arrow keys to make a selection.
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <p>&copy; 2025 Music of 8 Rivers. All rights reserved.</p>
+    <div class="social">
+      <a href="#">Instagram</a> | 
+      <a href="#">Twitter</a> | 
+      <a href="#">Facebook</a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Clint Mansell
+    </div>
   </footer>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let slides = document.querySelectorAll(".slide");
+      let current = 0;
+      const showSlide = (idx) => {
+        slides.forEach((s, i) => s.classList.toggle("active", i === idx));
+      };
+      document.querySelector(".slide-next").addEventListener("click", () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+      document.querySelector(".slide-prev").addEventListener("click", () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          current = (current + 1) % slides.length;
+          showSlide(current);
+        } else if (e.key === "ArrowLeft") {
+          current = (current - 1 + slides.length) % slides.length;
+          showSlide(current);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
