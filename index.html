@@ -29,7 +29,6 @@
 
   <!-- HEADER -->
   <header id="main-header" class="fixed w-full top-0 left-0 z-50 transition-colors duration-300">
-    <!-- The `items-center` class fixes the vertical alignment issue with the nav links -->
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#hero" class="font-serif text-2xl font-bold tracking-wide">8Rivers</a>
       <ul class="hidden md:flex items-center space-x-6">
@@ -41,12 +40,8 @@
   </header>
 
   <!-- HERO SECTION -->
-  <!-- This structure ensures the image covers the full section, and the overlay sits on top -->
   <section id="hero" class="h-screen bg-cover bg-center relative flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop');">
-    <!-- This div acts as the semi-transparent overlay -->
     <div class="absolute inset-0 bg-black/60"></div>
-    
-    <!-- Hero content is positioned relative to the parent section -->
     <div class="relative z-10 px-4">
       <h1 class="font-serif text-4xl md:text-6xl font-bold mb-2">We Tell Stories in Code</h1>
       <p class="text-xl md:text-2xl text-gray-200">Design · Development · Creativity</p>
@@ -67,16 +62,16 @@
       <div class="text-center mb-12">
         <h2 class="font-serif text-3xl md:text-4xl font-bold">Works</h2>
       </div>
-      <!-- A responsive grid that adjusts columns based on screen size -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <!-- We map over an array to create 15 project items to keep the HTML clean -->
+      <!-- Changed grid layout from 5 columns to 3 on large screens -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <script>
           const worksGrid = document.querySelector('#works .grid');
           for (let i = 1; i <= 15; i++) {
             const workItem = `
               <div class="work-item group cursor-pointer" data-video="dQw4w9WgXcQ" data-note="8Rivers notes: Project ${i} - A case study in modern web development.">
                 <div class="overflow-hidden rounded-lg">
-                  <img src="d86.jpg" alt="Project ${i}" class="w-full h-auto object-cover transition-all duration-500 grayscale group-hover:grayscale-0" />
+                  <!-- Added 'group-hover:scale-110' for the zoom effect -->
+                  <img src="d86.jpg" alt="Project ${i}" class="w-full h-auto object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110" />
                 </div>
                 <h3 class="mt-4 text-lg font-semibold text-center">Project ${i}</h3>
               </div>
@@ -145,9 +140,6 @@
         modal.classList.add('hidden');
       };
       
-      // We need to wait for the work items to be created by the script above
-      // before we can add event listeners to them.
-      // A small timeout ensures they exist in the DOM.
       setTimeout(() => {
         const workItems = document.querySelectorAll('.work-item');
         workItems.forEach(item => {
@@ -156,7 +148,6 @@
           });
         });
       }, 100);
-
 
       closeBtn.addEventListener('click', closeModal);
       modal.addEventListener('click', (e) => {
