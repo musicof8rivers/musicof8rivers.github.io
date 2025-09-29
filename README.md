@@ -1,168 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8Rivers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <title>8Rivers - Creative Digital Studio</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Open Sans', sans-serif; background: #000; color: #fff; }
-    a { color: inherit; text-decoration: none; }
-
-    header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; }
-    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; transition: background-color 0.3s ease; }
-    .nav-links { display: flex; list-style: none; }
-    .nav-links li { margin-left: 1.5rem; }
-    .nav-links a:hover { color: #ddd; }
-    header.scrolled .navbar { background-color: rgba(0,0,0,0.8); }
-
-    #hero { height: 100vh; background: url('hero.jpg') center center / cover no-repeat; position: relative; }
-    .hero-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.5); }
-    .hero-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 2rem; }
-    .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1.5rem; }
-
-    section { padding: 5rem 2rem; max-width: 1100px; margin: auto; }
-    h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
-    p { line-height: 1.6; }
-
-    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .work-item { background: #111; border-radius: 12px; overflow: hidden; transition: transform 0.3s; cursor: pointer; position: relative; }
-    .work-item:hover { transform: translateY(-5px); }
-    .work-item img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: filter 0.5s ease; }
-    .work-item:hover img { filter: grayscale(0%); }
-    .work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; }
-
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; padding: 2rem; overflow-y: auto; }
-    .modal-content { background: #111; padding: 1rem; border-radius: 10px; max-width: 800px; width: 100%; position: relative; display: flex; flex-direction: column; gap: 1rem; }
-    .modal-video-container { background: #222; padding: 1rem; border-radius: 6px; }
-    .modal-note-container { background: #333; padding: 1rem; border-radius: 6px; color: #fff; font-size: 1rem; line-height: 1.4; }
-    .modal iframe { width: 100%; height: 450px; border: none; border-radius: 6px; }
-    .close-btn { position: absolute; top: 10px; right: 10px; background: #444; color: #fff; border: none; font-size: 1.2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; }
-    .close-btn:hover { background: #666; }
-
-    form { display: flex; flex-direction: column; gap: 1rem; }
-    input, textarea { padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit; }
-    button { background: #444; color: #fff; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
-    button:hover { background: #666; }
-
-    footer { text-align: center; padding: 2rem; color: #aaa; background: #000; }
+    /* We are using Tailwind CSS for most styling, but we can define our base fonts and colors here */
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
   </style>
 </head>
-<body>
-  <header id="main-header">
-    <nav class="navbar">
-      <a href="#hero" class="logo">8Rivers</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#contact">Contact</a></li>
+<body class="antialiased">
+
+  <!-- HEADER -->
+  <header id="main-header" class="fixed w-full top-0 left-0 z-50 transition-colors duration-300">
+    <!-- The `items-center` class fixes the vertical alignment issue with the nav links -->
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#hero" class="font-serif text-2xl font-bold tracking-wide">8Rivers</a>
+      <ul class="hidden md:flex items-center space-x-6">
+        <li><a href="#about" class="hover:text-gray-300 transition-colors">About</a></li>
+        <li><a href="#works" class="hover:text-gray-300 transition-colors">Works</a></li>
+        <li><a href="#contact" class="hover:text-gray-300 transition-colors">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>We Tell Stories in Code</h1>
-      <p>Design · Development · Creativity</p>
+  <!-- HERO SECTION -->
+  <!-- This structure ensures the image covers the full section, and the overlay sits on top -->
+  <section id="hero" class="h-screen bg-cover bg-center relative flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop');">
+    <!-- This div acts as the semi-transparent overlay -->
+    <div class="absolute inset-0 bg-black/60"></div>
+    
+    <!-- Hero content is positioned relative to the parent section -->
+    <div class="relative z-10 px-4">
+      <h1 class="font-serif text-4xl md:text-6xl font-bold mb-2">We Tell Stories in Code</h1>
+      <p class="text-xl md:text-2xl text-gray-200">Design · Development · Creativity</p>
     </div>
   </section>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>8Rivers is a creative digital studio exploring the intersection of design, technology, and storytelling. Our mission is to craft meaningful experiences through elegant code and thoughtful visuals.</p>
-  </section>
+  <main class="container mx-auto px-6">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 md:py-28 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">About</h2>
+        <p class="text-lg text-gray-300 leading-relaxed">8Rivers is a creative digital studio exploring the intersection of design, technology, and storytelling. Our mission is to craft meaningful experiences through elegant code and thoughtful visuals.</p>
+      </div>
+    </section>
 
-  <section id="works">
-    <h2>Works</h2>
-    <div class="works-grid">
-      <!-- 15 projects -->
-      <div class="work-item" data-video="video1" data-note="8Rivers notes: Project 1"><img src="d86.jpg" alt="Project 1" /><h3>Project 1</h3></div>
-      <div class="work-item" data-video="video2" data-note="8Rivers notes: Project 2"><img src="d86.jpg" alt="Project 2" /><h3>Project 2</h3></div>
-      <div class="work-item" data-video="video3" data-note="8Rivers notes: Project 3"><img src="d86.jpg" alt="Project 3" /><h3>Project 3</h3></div>
-      <div class="work-item" data-video="video4" data-note="8Rivers notes: Project 4"><img src="d86.jpg" alt="Project 4" /><h3>Project 4</h3></div>
-      <div class="work-item" data-video="video5" data-note="8Rivers notes: Project 5"><img src="d86.jpg" alt="Project 5" /><h3>Project 5</h3></div>
-      <div class="work-item" data-video="video6" data-note="8Rivers notes: Project 6"><img src="d86.jpg" alt="Project 6" /><h3>Project 6</h3></div>
-      <div class="work-item" data-video="video7" data-note="8Rivers notes: Project 7"><img src="d86.jpg" alt="Project 7" /><h3>Project 7</h3></div>
-      <div class="work-item" data-video="video8" data-note="8Rivers notes: Project 8"><img src="d86.jpg" alt="Project 8" /><h3>Project 8</h3></div>
-      <div class="work-item" data-video="video9" data-note="8Rivers notes: Project 9"><img src="d86.jpg" alt="Project 9" /><h3>Project 9</h3></div>
-      <div class="work-item" data-video="video10" data-note="8Rivers notes: Project 10"><img src="d86.jpg" alt="Project 10" /><h3>Project 10</h3></div>
-      <div class="work-item" data-video="video11" data-note="8Rivers notes: Project 11"><img src="d86.jpg" alt="Project 11" /><h3>Project 11</h3></div>
-      <div class="work-item" data-video="video12" data-note="8Rivers notes: Project 12"><img src="d86.jpg" alt="Project 12" /><h3>Project 12</h3></div>
-      <div class="work-item" data-video="video13" data-note="8Rivers notes: Project 13"><img src="d86.jpg" alt="Project 13" /><h3>Project 13</h3></div>
-      <div class="work-item" data-video="video14" data-note="8Rivers notes: Project 14"><img src="d86.jpg" alt="Project 14" /><h3>Project 14</h3></div>
-      <div class="work-item" data-video="video15" data-note="8Rivers notes: Project 15"><img src="d86.jpg" alt="Project 15" /><h3>Project 15</h3></div>
-    </div>
-  </section>
+    <!-- WORKS SECTION -->
+    <section id="works" class="py-20 md:py-28">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold">Works</h2>
+      </div>
+      <!-- A responsive grid that adjusts columns based on screen size -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <!-- We map over an array to create 15 project items to keep the HTML clean -->
+        <script>
+          const worksGrid = document.querySelector('#works .grid');
+          for (let i = 1; i <= 15; i++) {
+            const workItem = `
+              <div class="work-item group cursor-pointer" data-video="dQw4w9WgXcQ" data-note="8Rivers notes: Project ${i} - A case study in modern web development.">
+                <div class="overflow-hidden rounded-lg">
+                  <img src="d86.jpg" alt="Project ${i}" class="w-full h-auto object-cover transition-all duration-500 grayscale group-hover:grayscale-0" />
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-center">Project ${i}</h3>
+              </div>
+            `;
+            worksGrid.innerHTML += workItem;
+          }
+        </script>
+      </div>
+    </section>
 
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <button class="close-btn" id="close-btn">X</button>
-      <div class="modal-video-container"><iframe id="modal-video" src="" allowfullscreen></iframe></div>
-      <div class="modal-note-container" id="modal-note"></div>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 md:py-28">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-8">Contact</h2>
+        <form class="space-y-4">
+          <input type="text" placeholder="Your Name" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          <input type="email" placeholder="Your Email" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          <textarea rows="5" placeholder="Your Message" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
+          <button type="submit" class="w-full py-3 bg-gray-200 text-black font-bold rounded-md hover:bg-white transition-colors">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-lg max-w-3xl w-full relative border border-gray-700 shadow-xl m-4">
+      <button id="close-btn" class="absolute -top-3 -right-3 w-9 h-9 bg-white text-black rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-300 transition-all">&times;</button>
+      <div class="p-5 space-y-4">
+        <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden bg-black">
+          <iframe id="modal-video" src="" title="Project Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+        </div>
+        <div id="modal-note" class="bg-gray-800 p-4 rounded-md text-gray-300"></div>
+      </div>
     </div>
   </div>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-   <textarea rows="5" placeholder="Your Message"></textarea>
-<button type="submit">Send</button>
-</form>
-</section> <!-- End of Contact -->
+  <!-- FOOTER -->
+  <footer class="text-center py-10 border-t border-gray-800">
+    <p class="text-gray-500">&copy; 2025, 8Rivers. All rights reserved.</p>
+  </footer>
 
-<footer>
-  <p>© 2025, 8Rivers. All rights reserved.</p>
-</footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- HEADER SCROLL EFFECT ---
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('bg-black/80', window.scrollY > 50);
+        header.classList.toggle('backdrop-blur-sm', window.scrollY > 50);
+      });
 
-<script>
-  // Navbar scroll background
-  window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
+      // --- MODAL FUNCTIONALITY ---
+      const modal = document.getElementById('modal');
+      const modalVideo = document.getElementById('modal-video');
+      const modalNote = document.getElementById('modal-note');
+      const closeBtn = document.getElementById('close-btn');
 
-  // Smooth scroll
-  document.querySelectorAll('.nav-links a').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = anchor.getAttribute('href').slice(1);
-      const targetEl = document.getElementById(targetId);
-      if(targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+      const openModal = (video, note) => {
+        modalVideo.src = `https://www.youtube.com/embed/${video}?rel=0&autoplay=1`;
+        modalNote.textContent = note;
+        modal.classList.remove('hidden');
+      };
+
+      const closeModal = () => {
+        modalVideo.src = '';
+        modal.classList.add('hidden');
+      };
+      
+      // We need to wait for the work items to be created by the script above
+      // before we can add event listeners to them.
+      // A small timeout ensures they exist in the DOM.
+      setTimeout(() => {
+        const workItems = document.querySelectorAll('.work-item');
+        workItems.forEach(item => {
+          item.addEventListener('click', () => {
+            openModal(item.dataset.video, item.dataset.note);
+          });
+        });
+      }, 100);
+
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
     });
-  });
+  </script>
 
-  // Modal functionality
-  const modal = document.getElementById('modal');
-  const modalVideo = document.getElementById('modal-video');
-  const modalNote = document.getElementById('modal-note');
-  const closeBtn = document.getElementById('close-btn');
-
-  document.querySelectorAll('.work-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const videoId = item.dataset.video;
-      const note = item.dataset.note;
-      modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-      modalNote.textContent = note;
-      modal.style.display = 'flex';
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    modalVideo.src = '';
-  });
-
-  window.addEventListener('click', e => {
-    if(e.target === modal){
-      modal.style.display = 'none';
-      modalVideo.src = '';
-    }
-  });
-</script>
 </body>
 </html>
+
