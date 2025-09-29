@@ -1,135 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>8Rivers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
-    /* Reset & base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #0a0a0a; color: #f5f5f5; }
+    body { font-family: 'Open Sans', sans-serif; background: #000; color: #fff; }
     a { color: inherit; text-decoration: none; }
 
-    /* Header / Navbar */
-    header { 
-      position: fixed; 
-      width: 100%; 
-      top: 0; 
-      left: 0; 
-      z-index: 100; 
-      background: #111; 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.6); 
+    /* HEADER + NAVBAR */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: #111;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
-    .navbar { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      padding: 1rem 3rem; 
-    }
-    .logo { 
-      font-size: 1.8rem; 
-      font-weight: 700; 
-      color: #00c4ff; 
-      letter-spacing: 1px; 
-    }
-    .nav-links { 
-      display: flex; 
-      list-style: none; 
-      gap: 2rem; 
-    }
-    .nav-links a { 
-      font-size: 1.1rem; 
-      font-weight: 600; 
-      color: #f5f5f5; 
-      position: relative; 
-      padding-bottom: 4px; 
-      transition: color 0.3s ease; 
-    }
-    .nav-links a::after {
-      content: ""; 
-      position: absolute; 
-      left: 0; 
-      bottom: 0; 
-      width: 0%; 
-      height: 2px; 
-      background: #00c4ff; 
-      transition: width 0.3s ease; 
-    }
-    .nav-links a:hover { color: #00c4ff; }
-    .nav-links a:hover::after { width: 100%; }
 
-    /* Hero */
-    #hero { 
-      height: 100vh; 
-      background: url('hero.jpg') center center / cover no-repeat; 
-      position: relative; 
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
     }
-    .hero-overlay { 
-      position: absolute; 
-      top: 0; left: 0; 
-      height: 100%; width: 100%; 
-      background: rgba(0,0,0,0.6); 
-    }
-    .hero-content { 
-      position: relative; 
-      z-index: 1; 
-      height: 100%; 
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: center; 
-      text-align: center; 
-      padding: 0 2rem; 
-    }
-    .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; color: #00c4ff; }
-    .hero-content p { font-size: 1.5rem; color: #ccc; }
 
-    /* Sections */
-    section { padding: 6rem 2rem; max-width: 1100px; margin: auto; }
-    h2 { font-size: 2.2rem; margin-bottom: 1rem; color: #00c4ff; }
-    p { line-height: 1.6; color: #ddd; }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 1px;
+    }
 
-    /* Works grid */
-    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .work-item { background: #181818; border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
-    .work-item:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
-    .work-item img { width: 100%; display: block; filter: grayscale(100%); transition: filter 0.5s ease; }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 3rem;
+    }
+
+    .nav-links li a {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #f0f0f0;
+      padding-bottom: 0.3rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #e63946;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #e63946;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    #hero {
+      height: 100vh;
+      background: url('hero.jpg') center center / cover no-repeat;
+      position: relative;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 2rem;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      color: #ddd;
+    }
+
+    /* SECTION STYLES */
+    section {
+      padding: 7rem 2rem 5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #e63946;
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: center;
+      color: #ccc;
+    }
+
+    /* WORKS GRID */
+    .works-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .work-item {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .work-item:hover { transform: translateY(-5px); }
+    .work-item img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%);
+      transition: filter 0.5s ease;
+    }
     .work-item:hover img { filter: grayscale(0%); }
-    .work-item h3 { padding: 1rem; font-size: 1.2rem; text-align: center; color: #f5f5f5; }
-
-    /* Modal */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; padding: 2rem; overflow-y: auto; }
-    .modal-content { background: #111; padding: 1.5rem; border-radius: 12px; max-width: 900px; width: 100%; position: relative; display: flex; flex-direction: column; gap: 1rem; animation: fadeIn 0.4s ease; }
-    .modal-video-container { background: #222; padding: 1rem; border-radius: 8px; }
-    .modal-note-container { background: #2a2a2a; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.5; }
-    .modal iframe { width: 100%; height: 500px; border: none; border-radius: 8px; }
-    .close-btn { position: absolute; top: -15px; right: -15px; background: #00c4ff; color: #111; border: none; font-size: 1.5rem; padding: 0.8rem 1.2rem; cursor: pointer; border-radius: 50%; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-    .close-btn:hover { background: #00a0cc; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .work-item h3 {
+      padding: 1rem;
+      font-size: 1.1rem;
+      text-align: center;
+      color: #fff;
     }
 
-    /* Forms */
-    form { display: flex; flex-direction: column; gap: 1rem; }
-    input, textarea { padding: 0.8rem; border: none; border-radius: 6px; font-family: inherit; background: #222; color: #f5f5f5; }
-    button { background: #00c4ff; color: #111; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-    button:hover { background: #00a0cc; }
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 2rem;
+      overflow-y: auto;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
 
-    footer { text-align: center; padding: 2rem; color: #777; background: #0a0a0a; }
+    .modal.show {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
 
-    /* Anchor offset fix */
-    :root { --nav-offset: 6rem; }
-    section { scroll-margin-top: var(--nav-offset); }
-    section::before {
-      content: ""; display: block; height: var(--nav-offset);
-      margin-top: calc(-1 * var(--nav-offset)); visibility: hidden; pointer-events: none;
+    .modal-content {
+      background: #111;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 850px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .modal-video-container iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    .modal-note-container {
+      color: #ddd;
+      padding: 1rem;
+      background: #222;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      font-size: 1.6rem;
+      font-weight: bold;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .close-btn:hover { background: #ff4d5a; }
+
+    /* CONTACT */
+    form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      width: 100%;
+      max-width: 500px;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    button {
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover { background: #ff4d5a; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+      background: #000;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header id="main-header">
     <nav class="navbar">
       <a href="#hero" class="logo">8Rivers</a>
@@ -141,140 +280,86 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Welcome to 8Rivers</h1>
-      <p>Exploring works and ideas</p>
+      <h1>We Tell Stories in Code</h1>
+      <p>Design · Development · Creativity</p>
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
     <h2>About</h2>
-    <p>8Rivers notes and works collection.</p>
+    <p>8Rivers is a creative digital studio exploring the intersection of design, technology, and storytelling. Our mission is to craft meaningful experiences through elegant code and thoughtful visuals.</p>
   </section>
 
-  <!-- Works -->
   <section id="works">
     <h2>Works</h2>
     <div class="works-grid">
-      <!-- Repeat 15 items -->
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 1">
-        <img src="d86.jpg" alt="Work 1"><h3>Work 1</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 2">
-        <img src="d86.jpg" alt="Work 2"><h3>Work 2</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 3">
-        <img src="d86.jpg" alt="Work 3"><h3>Work 3</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 4">
-        <img src="d86.jpg" alt="Work 4"><h3>Work 4</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 5">
-        <img src="d86.jpg" alt="Work 5"><h3>Work 5</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 6">
-        <img src="d86.jpg" alt="Work 6"><h3>Work 6</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 7">
-        <img src="d86.jpg" alt="Work 7"><h3>Work 7</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 8">
-        <img src="d86.jpg" alt="Work 8"><h3>Work 8</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 9">
-        <img src="d86.jpg" alt="Work 9"><h3>Work 9</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 10">
-        <img src="d86.jpg" alt="Work 10"><h3>Work 10</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 11">
-        <img src="d86.jpg" alt="Work 11"><h3>Work 11</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 12">
-        <img src="d86.jpg" alt="Work 12"><h3>Work 12</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 13">
-        <img src="d86.jpg" alt="Work 13"><h3>Work 13</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 14">
-        <img src="d86.jpg" alt="Work 14"><h3>Work 14</h3>
-      </div>
-      <div class="work-item" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-note="8Rivers notes: Project 15">
-        <img src="d86.jpg" alt="Work 15"><h3>Work 15</h3>
-      </div>
+      <!-- Repeat 15 projects -->
+      <div class="work-item" data-video="video1" data-note="8Rivers notes: Project 1"><img src="d86.jpg" alt="Project 1"><h3>Project 1</h3></div>
+      <div class="work-item" data-video="video2" data-note="8Rivers notes: Project 2"><img src="d86.jpg" alt="Project 2"><h3>Project 2</h3></div>
+      <div class="work-item" data-video="video3" data-note="8Rivers notes: Project 3"><img src="d86.jpg" alt="Project 3"><h3>Project 3</h3></div>
+      <div class="work-item" data-video="video4" data-note="8Rivers notes: Project 4"><img src="d86.jpg" alt="Project 4"><h3>Project 4</h3></div>
+      <div class="work-item" data-video="video5" data-note="8Rivers notes: Project 5"><img src="d86.jpg" alt="Project 5"><h3>Project 5</h3></div>
+      <div class="work-item" data-video="video6" data-note="8Rivers notes: Project 6"><img src="d86.jpg" alt="Project 6"><h3>Project 6</h3></div>
+      <div class="work-item" data-video="video7" data-note="8Rivers notes: Project 7"><img src="d86.jpg" alt="Project 7"><h3>Project 7</h3></div>
+      <div class="work-item" data-video="video8" data-note="8Rivers notes: Project 8"><img src="d86.jpg" alt="Project 8"><h3>Project 8</h3></div>
+      <div class="work-item" data-video="video9" data-note="8Rivers notes: Project 9"><img src="d86.jpg" alt="Project 9"><h3>Project 9</h3></div>
+      <div class="work-item" data-video="video10" data-note="8Rivers notes: Project 10"><img src="d86.jpg" alt="Project 10"><h3>Project 10</h3></div>
+      <div class="work-item" data-video="video11" data-note="8Rivers notes: Project 11"><img src="d86.jpg" alt="Project 11"><h3>Project 11</h3></div>
+      <div class="work-item" data-video="video12" data-note="8Rivers notes: Project 12"><img src="d86.jpg" alt="Project 12"><h3>Project 12</h3></div>
+      <div class="work-item" data-video="video13" data-note="8Rivers notes: Project 13"><img src="d86.jpg" alt="Project 13"><h3>Project 13</h3></div>
+      <div class="work-item" data-video="video14" data-note="8Rivers notes: Project 14"><img src="d86.jpg" alt="Project 14"><h3>Project 14</h3></div>
+      <div class="work-item" data-video="video15" data-note="8Rivers notes: Project 15"><img src="d86.jpg" alt="Project 15"><h3>Project 15</h3></div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="close-btn">×</button>
+      <div class="modal-video-container"><iframe id="modal-video" src="" allowfullscreen></iframe></div>
+      <div class="modal-note-container" id="modal-note"></div>
+    </div>
+  </div>
+
   <section id="contact">
     <h2>Contact</h2>
     <form>
-      <input type="text" placeholder="Your name">
-      <input type="email" placeholder="Your email">
-      <textarea rows="5" placeholder="Your message"></textarea>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message"></textarea>
       <button type="submit">Send</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 8Rivers. All rights reserved.</p>
+    <p>© 2025, 8Rivers. All rights reserved.</p>
   </footer>
 
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <button class="close-btn" id="closeModal">&times;</button>
-      <div class="modal-video-container">
-        <iframe id="modalVideo" src="" allowfullscreen></iframe>
-      </div>
-      <div class="modal-note-container" id="modalNote"></div>
-    </div>
-  </div>
-
   <script>
-    // Dynamic nav offset
-    (function() {
-      const nav = document.getElementById('main-header');
-      function setNavOffset() {
-        const h = (nav && nav.offsetHeight) ? nav.offsetHeight : 60;
-        document.documentElement.style.setProperty('--nav-offset', h + 'px');
-      }
-      setNavOffset();
-      window.addEventListener('resize', setNavOffset);
-      window.addEventListener('load', setNavOffset);
-    })();
+    const modal = document.getElementById('modal');
+    const modalVideo = document.getElementById('modal-video');
+    const modalNote = document.getElementById('modal-note');
+    const closeBtn = document.getElementById('close-btn');
 
-    // Modal logic
-    const modal = document.getElementById("modal");
-    const modalVideo = document.getElementById("modalVideo");
-    const modalNote = document.getElementById("modalNote");
-    const closeModal = document.getElementById("closeModal");
-
-    document.querySelectorAll(".work-item").forEach(item => {
-      item.addEventListener("click", () => {
-        const video = item.getAttribute("data-video");
-        const note = item.getAttribute("data-note");
-        modal.style.display = "flex";
-        modalVideo.src = video;
+    document.querySelectorAll('.work-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const videoId = item.dataset.video;
+        const note = item.dataset.note;
+        modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
         modalNote.textContent = note;
+        modal.classList.add('show');
       });
     });
 
-    closeModal.addEventListener("click", () => {
-      modal.style.display = "none";
-      modalVideo.src = "";
-    });
+    function closeModal() {
+      modal.classList.remove('show');
+      setTimeout(() => { modalVideo.src = ''; }, 300);
+    }
 
-    window.addEventListener("click", e => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-        modalVideo.src = "";
-      }
-    });
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   </script>
 </body>
 </html>
