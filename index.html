@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>8Rivers - Creative Digital Studio</title>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/img/logo.jpg">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
@@ -34,6 +37,136 @@
       <ul class="hidden md:flex items-center space-x-6">
         <li><a href="#about" class="py-2 hover:text-gray-300 transition-colors">About</a></li>
         <li><a href="#works" class="py-2 hover:text-gray-300 transition-colors">Works</a></li>
+        <li><a href="#contact" class="py-2 hover:text-gray-300 transition-colors">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="h-screen bg-cover bg-center relative flex items-center justify-center text-center" style="background-image: url('assets/img/top-banner.jpg');">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 px-4">
+      <h1 class="font-serif text-4xl md:text-6xl font-bold mb-2">We Tell Stories in Code</h1>
+      <p class="text-xl md:text-2xl text-gray-200">Design · Development · Creativity</p>
+    </div>
+  </section>
+
+  <main class="container mx-auto px-6">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 md:py-28 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">About</h2>
+        <p class="text-lg text-gray-300 leading-relaxed">8Rivers is a creative digital studio exploring the intersection of design, technology, and storytelling. Our mission is to craft meaningful experiences through elegant code and thoughtful visuals.</p>
+      </div>
+    </section>
+
+    <!-- WORKS SECTION -->
+    <section id="works" class="py-20 md:py-28">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold">Works</h2>
+      </div>
+      <!-- Changed grid layout from 5 columns to 3 on large screens -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <script>
+          const worksGrid = document.querySelector('#works .grid');
+          for (let i = 1; i <= 15; i++) {
+            const workItem = `
+              <div class="work-item group cursor-pointer" data-video="dQw4w9WgXcQ" data-note="8Rivers notes: Project ${i} - A case study in modern web development.">
+                <div class="overflow-hidden rounded-lg">
+                  <!-- Added 'group-hover:scale-110' for the zoom effect -->
+                  <img src="d86.jpg" alt="Project ${i}" class="w-full h-auto object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110" />
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-center">Project ${i}</h3>
+              </div>
+            `;
+            worksGrid.innerHTML += workItem;
+          }
+        </script>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 md:py-28">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-8">Contact</h2>
+        <form class="space-y-4">
+          <input type="text" placeholder="Your Name" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          <input type="email" placeholder="Your Email" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          <textarea rows="5" placeholder="Your Message" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
+          <button type="submit" class="w-full py-3 bg-gray-200 text-black font-bold rounded-md hover:bg-white transition-colors">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-lg max-w-3xl w-full relative border border-gray-700 shadow-xl m-4">
+      <button id="close-btn" class="absolute -top-3 -right-3 w-9 h-9 bg-white text-black rounded-full flex items-center justify-center text-xl font-bold hover:bg-gray-300 transition-all">&times;</button>
+      <div class="p-5 space-y-4">
+        <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden bg-black">
+          <iframe id="modal-video" src="" title="Project Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+        </div>
+        <div id="modal-note" class="bg-gray-800 p-4 rounded-md text-gray-300"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-10 border-t border-gray-800">
+    <p class="text-gray-500">&copy; 2025, 8Rivers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- HEADER SCROLL EFFECT ---
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('bg-black/80', window.scrollY > 50);
+        header.classList.toggle('backdrop-blur-sm', window.scrollY > 50);
+      });
+
+      // --- MODAL FUNCTIONALITY ---
+      const modal = document.getElementById('modal');
+      const modalVideo = document.getElementById('modal-video');
+      const modalNote = document.getElementById('modal-note');
+      const closeBtn = document.getElementById('close-btn');
+
+      const openModal = (video, note) => {
+        modalVideo.src = `https://www.youtube.com/embed/${video}?rel=0&autoplay=1`;
+        modalNote.textContent = note;
+        modal.classList.remove('hidden');
+      };
+
+      const closeModal = () => {
+        modalVideo.src = '';
+        modal.classList.add('hidden');
+      };
+      
+      setTimeout(() => {
+        const workItems = document.querySelectorAll('.work-item');
+        workItems.forEach(item => {
+          item.addEventListener('click', () => {
+            openModal(item.dataset.video, item.dataset.note);
+          });
+        });
+      }, 100);
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
         <li><a href="#contact" class="py-2 hover:text-gray-300 transition-colors">Contact</a></li>
       </ul>
     </nav>
