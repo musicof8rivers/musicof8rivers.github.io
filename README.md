@@ -33,9 +33,9 @@
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#hero" class="font-serif text-2xl font-bold tracking-wide">8Rivers</a>
       <ul class="hidden md:flex items-center space-x-6">
-        <li><a href="#about" class="hover:text-gray-300 transition-colors">About</a></li>
-        <li><a href="#works" class="hover:text-gray-300 transition-colors">Works</a></li>
-        <li><a href="#contact" class="hover:text-gray-300 transition-colors">Contact</a></li>
+        <li><a href="#about" class="py-2 hover:text-gray-300 transition-colors">About</a></li>
+        <li><a href="#works" class="py-2 hover:text-gray-300 transition-colors">Works</a></li>
+        <li><a href="#contact" class="py-2 hover:text-gray-300 transition-colors">Contact</a></li>
       </ul>
     </nav>
   </header>
