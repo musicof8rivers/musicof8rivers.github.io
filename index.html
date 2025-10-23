@@ -70,9 +70,9 @@
           <h3 class="mt-4 text-lg font-semibold text-center leading-snug">Zipclash<br><span class="text-sm font-normal text-gray-400">(Composer + Sound design)</span></h3>
         </div>
 
-        <div class="work-item group cursor-pointer" data-video="u5zTYjPovQo" data-note='Unibrow (Composer + Sound design) - <a href="https://www.imdb.com/title/tt27844767/?ref_=nv_sr_srsg_0_tt_4_nm_4_in_0_q_unibrow" target="_blank" rel="noopener noreferrer" class="text-white underline hover:text-gray-300">IMDb</a>'>
+        <div class="work-item group cursor-pointer" data-video="Mevp5lHy6T4" data-note='Unibrow (Composer + Sound design) - <a href="https://www.imdb.com/title/tt27844767/?ref_=nv_sr_srsg_0_tt_4_nm_4_in_0_q_unibrow" target="_blank" rel="noopener noreferrer" class="text-white underline hover:text-gray-300">IMDb</a>'>
           <div class="relative overflow-hidden rounded-lg">
-            <img src="https://img.youtube.com/vi/u5zTYjPovQo/hqdefault.jpg" alt="Unibrow" class="w-full h-auto object-cover transition-all duration-500 group-hover:scale-110" />
+            <img src="https://img.youtube.com/vi/Mevp5lHy6T4/hqdefault.jpg" alt="Unibrow" class="w-full h-auto object-cover transition-all duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
               <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
             </div>
@@ -301,7 +301,6 @@
       setTimeout(() => {
         const workItems = document.querySelectorAll('.work-item');
         workItems.forEach(item => {
-          // THIS WAS THE FIX: Changed ()ax => to () =>
           item.addEventListener('click', () => {
             openModal(item.dataset.video, item.dataset.note);
           });
