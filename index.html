@@ -219,15 +219,15 @@
     <section id="contact" class="py-20 md:py-28">
       <div class="max-w-xl mx-auto text-center">
         <h2 class="font-serif text-3xl md:text-4xl font-bold mb-8">Contact</h2>
-        <form class="space-y-4">
-          <input type="text" placeholder="Your Name" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
-          <input type="email" placeholder="Your Email" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
-          <textarea rows="5" placeholder="Your Message" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
+        
+        <form action="https://formspree.io/f/xblzvvgl" method="POST" class="space-y-4">
+          <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+          <textarea rows="5" name="message" placeholder="Your Message" required class="w-full p-3 bg-gray-900 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
           <button type="submit" class="w-full py-3 bg-gray-200 text-black font-bold rounded-md hover:bg-white transition-colors">Send</button>
         </form>
-      </div>
+        </div>
     </section>
-  </main>
 
   <!-- MODAL -->
   <div id="modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
