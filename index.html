@@ -1,81 +1,73 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8Rivers - Creative Digital Studio</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="assets/img/logo.jpg">
-
-  <!-- Tailwind CSS -->
+  <title>8 Rivers Works</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  
   <style>
-    /* We are using Tailwind CSS for most styling, but we can define our base fonts and colors here */
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Open Sans', sans-serif;
-    }
-    .font-serif {
-      font-family: 'Playfair Display', serif;
-    }
+    .video-thumb { cursor: pointer; transition: transform 0.3s ease; }
+    .video-thumb:hover { transform: scale(1.05); }
   </style>
 </head>
-<body class="antialiased">
+<body class="bg-gray-900 text-white">
 
-  <!-- HEADER -->
-  <header id="main-header" class="fixed w-full top-0 left-0 z-50 transition-colors duration-300">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#hero" class="font-serif text-2xl font-bold tracking-wide">8Rivers</a>
-      <ul class="hidden md:flex items-center space-x-6">
-        <li><a href="#about" class="py-2 hover:text-gray-300 transition-colors">About</a></li>
-        <li><a href="#works" class="py-2 hover:text-gray-300 transition-colors">Works</a></li>
-        <li><a href="#contact" class="py-2 hover:text-gray-300 transition-colors">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section id="hero" class="h-screen bg-cover bg-center relative flex items-center justify-center text-center" style="background-image: url('assets/img/top-banner.jpg');">
-    <div class="absolute inset-0 bg-black/60"></div>
-    <div class="relative z-10 px-4">
-      <h1 class="font-serif text-4xl md:text-6xl font-bold mb-2">We Tell Stories</h1>
-      <p class="text-xl md:text-2xl text-gray-200">Music Composition · Sound Design </p>
-    </div>
+  <section id="works" class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-8 text-center">8 Rivers Works</h2>
+    <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
   </section>
 
-  <main class="container mx-auto px-6">
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 md:py-28 text-center">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">About</h2>
-        <p class="text-lg text-gray-300 leading-relaxed"> My nature is to serve the story. I use melody and sound to find its heart, and once that heart begins to beat, the tale comes alive on its own.</p>
-      </div>
-    </section>
-
-    <!-- WORKS SECTION -->
-    <!-- Replace your current works grid with this -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-  <div class="work-item group cursor-pointer" data-video="aU6rCtD-KE8" data-note="8Rivers - Video 1">
-    <div class="overflow-hidden rounded-lg">
-      <img src="https://img.youtube.com/vi/aU6rCtD-KE8/hqdefault.jpg" alt="Video 1" class="w-full h-auto object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110" />
+  <!-- Modal -->
+  <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+    <div class="relative w-full max-w-3xl aspect-video">
+      <iframe id="videoFrame" class="w-full h-full rounded-xl" src="" frameborder="0"
+        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <button id="closeBtn"
+        class="absolute -top-10 right-0 text-white text-2xl bg-red-600 px-3 py-1 rounded-lg">✕</button>
     </div>
-    <h3 class="mt-4 text-lg font-semibold text-center">Video 1</h3>
   </div>
 
-  <div class="work-item group cursor-pointer" data-video="CmfwhJ4T4YY" data-note="8Rivers - Video 2">
-    <div class="overflow-hidden rounded-lg">
-      <img src="https://img.youtube.com/vi/CmfwhJ4T4YY/hqdefault.jpg" alt="Video 2" class="w-full h-auto object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-110" />
-    </div>
-    <h3 class="mt-4 text-lg font-semibold text-center">Video 2</h3>
-  </div>
+  <script>
+    const videos = [
+      "aU6rCtD-KE8","CmfwhJ4T4YY","to6a6rYuV8o","fwI_BHN-xGI",
+      "X3GmbBXlwOM","q1XzcWdryzY","50GRxeEnKcA","7ZbAhpVOXPk",
+      "lWMmziwXL5U","u0IhWsbb2xw","yLb-Myh6t9o","Mevp5lHy6T4"
+    ];
+
+    const gallery = document.getElementById('gallery');
+    videos.forEach(id => {
+      const div = document.createElement('div');
+      div.className = "video-thumb bg-gray-800 rounded-xl overflow-hidden shadow-lg";
+      div.innerHTML = `
+        <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" 
+             alt="Video thumbnail" class="w-full object-cover">
+      `;
+      div.onclick = () => openVideo(id);
+      gallery.appendChild(div);
+    });
+
+    const modal = document.getElementById('videoModal');
+    const frame = document.getElementById('videoFrame');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openVideo(id) {
+      frame.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeVideo() {
+      frame.src = "";
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    closeBtn.addEventListener('click', closeVideo);
+    modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
+  </script>
+
+</body>
+</html>
 
   <div class="work-item group cursor-pointer" data-video="to6a6rYuV8o" data-note="8Rivers - Video 3">
     <div class="overflow-hidden rounded-lg">
