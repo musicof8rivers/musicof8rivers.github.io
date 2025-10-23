@@ -155,51 +155,51 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // --- HEADER SCROLL EFFECT ---
-      const header = document.getElementById('main-header');
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('bg-black/80', window.scrollY > 50);
-        header.classList.toggle('backdrop-blur-sm', window.scrollY > 50);
-      });
+document.addEventListener('DOMContentLoaded', () => {
+  // --- HEADER SCROLL EFFECT ---
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 50;
+    header.classList.toggle('bg-black/80', scrolled);
+    header.classList.toggle('backdrop-blur-sm', scrolled);
+  });
 
-      // --- MODAL FUNCTIONALITY ---
-      const modal = document.getElementById('modal');
-      const modalVideo = document.getElementById('modal-video');
-      const modalNote = document.getElementById('modal-note');
-      const closeBtn = document.getElementById('close-btn');
+  // --- MODAL FUNCTIONALITY ---
+  const modal = document.getElementById('modal');
+  const modalVideo = document.getElementById('modal-video');
+  const modalNote = document.getElementById('modal-note');
+  const closeBtn = document.getElementById('close-btn');
 
-      const openModal = (video, note) => {
-        modalVideo.src = `https://www.youtube.com/embed/${video}?rel=0&autoplay=1`;
-        modalNote.textContent = note;
-        modal.classList.remove('hidden');
-      };
+  const openModal = (video, note) => {
+    modalVideo.src = `https://www.youtube.com/embed/${video}?rel=0&autoplay=1`;
+    modalNote.textContent = note;
+    modal.classList.remove('hidden');
+  };
 
-      const closeModal = () => {
-        modalVideo.src = '';
-        modal.classList.add('hidden');
-      };
-      
-      setTimeout(() => {
-        const workItems = document.querySelectorAll('.work-item');
-        workItems.forEach(item => {
-          item.addEventListener('click', () => {
-            openModal(item.dataset.video, item.dataset.note);
-          });
-        });
-      }, 100);
+  const closeModal = () => {
+    modalVideo.src = '';
+    modal.classList.add('hidden');
+  };
 
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-          closeModal();
-        }
-      });
+  // ✅ Attach listeners immediately to all static .work-item elements
+  document.querySelectorAll('.work-item').forEach(item => {
+    item.addEventListener('click', () => {
+      openModal(item.dataset.video, item.dataset.note);
     });
-  </script>
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+});
+</script>
+
 
 </body>
 </html>
